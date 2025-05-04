@@ -1,73 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hicham Elhaiba - CV</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hicham Elhaiba | Civil Engineer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
+<body class="dark-mode">
 
-<body>
-    <header>
-        <h1>Hicham Elhaiba</h1>
-        <div class="contact-info">
-            <p>Email: <a href="mailto:hichame.elhaiba1@gmail.com">hichame.elhaiba1@gmail.com</a></p>
-            <p>Phone: 0622095283</p>
-            <p>Location: Settat, Maroc</p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/hicham-elhaiba-9a56b52b4/" target="_blank">linkedin.com/in/hicham-elhaiba-9a56b52b4</a></p>
-        </div>
-    </header>
+  <!-- Theme Toggle -->
+  <label class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+  </label>
 
-    <section class="section profile">
-        <h2>Profile</h2>
-        <p>
-            Technicien supérieur en génie civil, à la recherche d'un stage ou d'un emploi pour renforcer mes acquis et me développer dans le secteur de la construction.
-            Motivé par de nouveaux défis, j'ai des compétences technologiques et interpersonnelles solides. Je souhaite contribuer à des projets ambitieux et innovants.
-        </p>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <img src="assets/images/1.jpg" alt="Profile Photo" class="profile-pic" />
+      <h1>Hicham Elhaiba</h1>
+      <p class="subtitle">Civil Engineering Technician</p>
+      <a href="assets/CV.pdf" download class="btn">Download Resume</a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/hicham-elhaiba-9a56b52b4/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:hichame.elhaiba1@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </section>
 
-    <section class="section skills">
-        <h2>Compétences</h2>
-        <ul class="skills-list">
-            <li>Arabe</li>
-            <li>Français</li>
-            <li>Anglais</li>
-            <li>Robot Structural Analysis Professional</li>
-            <li>Ms Office 365</li>
-            <li>AutoCAD</li>
-            <li>Concrete Building Structures (CBS)</li>
-        </ul>
-    </section>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I am a civil engineering technician with experience in reinforced concrete design, seismic analysis, and structural modeling using software such as RSA, CBS, and AutoCAD.</p>
+      <ul>
+        <li>🎓 Licence en Génie Civil</li>
+        <li>🎓 DUT en Génie Civil</li>
+        <li>📜 Baccalaureate - Sciences Expérimentales</li>
+      </ul>
+    </div>
+  </section>
 
-    <section class="section experience">
-        <h2>Expérience</h2>
-        <h3>Stagiaire, L'AGENCE NATIONALE DES EQUIPEMENTS PUBLICS - Marrakech (avril 2024 - juin 2024)</h3>
+  <!-- Experience Section -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="card">
+        <h3>Agence Nationale des Equipements Publics (ANEP)</h3>
+        <p class="date">April 2024 – June 2024 | Marrakech</p>
         <ul>
-            <li>Conception des plans de béton armé pour plusieurs blocs d'un lycée.</li>
-            <li>Étude parasismique : Modélisation de la structure, analyse modale et vérification des déplacements latéraux.</li>
-            <li>Ferraillage des éléments porteurs et vérification de leur capacité à résister aux efforts horizontaux.</li>
+          <li>Conception des plans de béton armé pour plusieurs blocs d’un lycée.</li>
+          <li>Étude parasismique avec modélisation aux éléments finis et analyse modale.</li>
+          <li>Ferraillage des éléments porteurs avec vérification des efforts horizontaux.</li>
         </ul>
-
-        <h3>Stagiaire, BATI-ENGINEERING - Settat (juillet 2023 - août 2023)</h3>
+      </div>
+      <div class="card">
+        <h3>BATI-ENGINEERING</h3>
+        <p class="date">July 2023 – August 2023 | Settat</p>
         <ul>
-            <li>Conception des plans de béton armé pour un bâtiment R+2, pré-dimensionnement manuel et via CBS.</li>
-            <li>Calcul de métrés pour le gros œuvre d'un R+2, estimation des coûts et des matériaux nécessaires.</li>
+          <li>Conception des plans de béton armé pour un bâtiment R+2.</li>
+          <li>Étude parasismique avec modélisation aux éléments finis et analyse modale.</li>
+          <li>Dimensionnement manuel et optimisation des sections d’acier.</li>
         </ul>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section class="section education">
-        <h2>Formation</h2>
-        <h3>DIPLÔMES UNIVERSITAIRES DE TECHNOLOGIE EN GÉNIE CIVIL</h3>
-        <p>Ecole Supérieure de Technologie, Fkih Ben Salah - septembre 2024</p>
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <h2>Technical Skills</h2>
+      <ul>
+        <li>AutoCAD</li>
+        <li>Robot Structural Analysis (RSA)</li>
+        <li>Concrete Building Structures (CBS)</li>
+        <li>Revit</li>
+        <li>MS Office 365</li>
+        <li>Reinforced Concrete Design</li>
+        <li>Seismic Analysis & Finite Element Modeling</li>
+        <li>Road Pavement Design (GMTR norms)</li>
+      </ul>
+    </div>
+  </section>
 
-        <h3>BACCALAURÉAT</h3>
-        <p>Lycee Errazi, Settat - juillet 2022</p>
-    </section>
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="card">
+        <h3>Etude technique et économique d’un lycée</h3>
+        <ul>
+          <li>Réalisation des plans de coffrage.</li>
+          <li>Étude sismique de la structure avec modélisation et vérification parasismique.</li>
+          <li>Estimation du métré et des coûts.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Projet de bâtiment R+2</h3>
+        <ul>
+          <li>Conception des plans de béton armé (coffrage et ferraillage).</li>
+          <li>Pré-dimensionnement des éléments porteurs.</li>
+          <li>Estimation des quantités de matériaux.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Hicham Elhaiba</p>
-    </footer>
+  <!-- Languages Section -->
+  <section class="languages" id="languages">
+    <div class="container">
+      <h2>Languages</h2>
+      <ul>
+        <li>Arabe : Langue maternelle</li>
+        <li>Anglais : Intermédiaire</li>
+        <li>Français : Intermédiaire</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Hicham Elhaiba. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
