@@ -296,14 +296,61 @@
 
   /* RESPONSIVE */
   @media(max-width:900px){
+    body { cursor: auto !important; }
+    .cursor, .cursor-ring { display: none !important; }
     nav{padding:1.2rem 1.5rem;}
     .nav-links{display:none;}
-    .hero{grid-template-columns:1fr;padding:6rem 1.5rem 4rem;}
-    .hero-right{display:none;}
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--bg);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      gap: 2rem;
+    }
+    .nav-links.active li a {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .mobile-menu-btn {
+      display: flex !important;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      z-index: 1001;
+      cursor: pointer;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--accent);
+      transition: 0.3s;
+    }
+    .mobile-menu-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .hero{grid-template-columns:1fr;padding:6rem 1.5rem 4rem; text-align: center; gap: 3rem;}
+    .hero-tag { justify-content: center; }
+    .hero-desc { margin: 0 auto 2.5rem; }
+    .hero-ctas { justify-content: center; }
+    .hero-right{display:flex; justify-content: center; order: -1;}
+    .photo-frame{width:280px; height:350px;}
     section{padding:5rem 1.5rem;}
     .about-grid,.contact-grid,.skills-container{grid-template-columns:1fr;gap:2.5rem;}
     .projects-grid{grid-template-columns:1fr;}
+    .edu-card { flex-direction: column; text-align: center; gap: 1rem; }
+    .edu-year { text-align: center; }
   }
+  .mobile-menu-btn { display: none; }
 </style>
 </head>
 <body>
@@ -319,6 +366,11 @@
 <nav>
   <div class="scroll-progress" id="scrollProgress"></div>
   <span class="nav-logo">HE / Portfolio</span>
+  <button class="mobile-menu-btn" id="mobileMenuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
@@ -623,7 +675,25 @@
   // THEME TOGGLE
   const themeToggle = document.getElementById('themeToggle');
   const body = document.body;
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinksList = document.querySelector('.nav-links');
   
+  // MOBILE MENU LOGIC
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.classList.toggle('active');
+    navLinksList.classList.toggle('active');
+    body.style.overflow = navLinksList.classList.contains('active') ? 'hidden' : '';
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenuBtn.classList.remove('active');
+      navLinksList.classList.remove('active');
+      body.style.overflow = '';
+    });
+  });
+
   // Check for saved theme or use dark as default
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
@@ -643,6 +713,9 @@
   // MAGNETIC BUTTONS
   document.querySelectorAll('.btn-primary, .btn-secondary, .theme-toggle').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
+      // Disable magnetic effect on touch devices
+      if (window.matchMedia("(pointer: coarse)").matches) return;
+      
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
@@ -665,7 +738,7 @@
 
   // STARS BACKGROUND LOGIC
   const starsContainer = document.getElementById('stars');
-  const starCount = 150;
+  const starCount = window.innerWidth < 900 ? 60 : 150; // Fewer stars on mobile for performance
 
   for (let i = 0; i < starCount; i++) {
     const wrapper = document.createElement('div');
@@ -691,11 +764,11 @@
   }
 
   // CLICK EFFECT LOGIC
-  document.addEventListener('mousedown', (e) => {
+  const createClickEffect = (x, y) => {
     const ripple = document.createElement('div');
     ripple.className = 'click-effect';
-    ripple.style.left = `${e.clientX}px`;
-    ripple.style.top = `${e.clientY}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
     document.body.appendChild(ripple);
 
     // Create small star burst on click
@@ -704,8 +777,8 @@
       p.className = 'click-effect';
       p.style.width = '4px';
       p.style.height = '4px';
-      p.style.left = `${e.clientX}px`;
-      p.style.top = `${e.clientY}px`;
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
       p.style.boxShadow = 'none';
       
       const angle = (i / 8) * Math.PI * 2;
@@ -727,6 +800,13 @@
     }
 
     setTimeout(() => ripple.remove(), 600);
+  };
+
+  document.addEventListener('mousedown', (e) => createClickEffect(e.clientX, e.clientY));
+  document.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      createClickEffect(e.touches[0].clientX, e.touches[0].clientY);
+    }
   });
 </script>
 </body>
